@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        key {
+            keyAlias 'key'
+            keyPassword '123456'
+            storeFile file('C:/Users/Andres/AndroidStudioProjects/Albores/Key.jks')
+            storePassword '123456'
+        }
+    }
+    dexOptions {
+
+        preDexLibraries = false
+        javaMaxHeapSize "4g" // 2g should be also OK
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+    defaultConfig {
+        applicationId "com.Gedi.Devteam.Sfun"
+        minSdkVersion 13
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+
+    }
+    buildTypes {
+        release {
+            multiDexEnabled true
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            multiDexEnabled true
+
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.itextpdf:itextg:5.5.9'
+
+    compile 'com.itextpdf.tool:xmlworker:5.5.9'
+    compile 'com.google.android.gms:play-services:9.0.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:design:23.4.0'
+}
